@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title id="page-title">Loading...</title>
+  <meta name="description" content="Finance • Quant • AI • Projects" />
+  <style>
+    :root{
+      --bg:#0e1116; --card:#151a22; --muted:#9aa4b2; --fg:#e6edf3; --line:#2b3240; 
+      --accent:#3fb950; --link:#58a6ff; --accent-hover:#33a043;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+    a{color:var(--link);text-decoration:none;transition:all .2s}
+    a:hover{text-decoration:underline}
+    img{max-width:100%;display:block}
+    code{background:#1c2330;padding:2px 6px;border-radius:4px;font-size:14px}
+    
+    .container{max-width:1100px;margin-inline:auto;padding:24px}
+    
+    /* Header */
+    header{padding:28px 0;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:100;backdrop-filter:blur(8px)}
+    .header-content{display:flex;gap:18px;align-items:center;justify-content:space-between}
+    .brand{font-weight:700;font-size:20px;letter-spacing:.3px;color:var(--fg)}
+    .brand:hover{text-decoration:none;color:var(--accent)}
+    .nav{display:flex;gap:18px;align-items:center}
+    .nav a{font-weight:500}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;padding:48px 0}
+    .hero h1{font-size:42px;line-height:1.2;margin:0 0 12px;background:linear-gradient(135deg,var(--fg) 0%,var(--muted) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-subtitle{color:var(--muted);margin:0 0 20px;font-size:18px}
+    .btn{display:inline-block;background:var(--accent);color:#07110a;border-radius:10px;padding:11px 18px;font-weight:700;transition:all .2s}
+    .btn:hover{background:var(--accent-hover);text-decoration:none;transform:translateY(-1px);box-shadow:0 4px 12px rgba(63,185,80,.3)}
+    .badge{display:inline-flex;gap:8px;align-items:center;color:var(--muted);font-size:14px;margin-bottom:18px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-card{background:linear-gradient(145deg,#0f1420 0%,#121a28 100%);border:1px solid var(--line);border-radius:16px;padding:20px;transition:transform .2s}
+    .hero-card:hover{transform:translateY(-2px)}
+    .hero-card img{border-radius:10px;border:1px solid var(--line)}
+    .hero-tip{margin:12px 0 0;color:var(--muted);font-size:13px}
+
+    /* Section */
+    .section{padding:48px 0}
+    .section-header{margin-bottom:32px}
+    .section h2{font-size:32px;margin:0 0 8px}
+    .section-desc{color:var(--muted);font-size:17px}
+
+    /* Project Grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+    .card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+    .thumb{aspect-ratio:16/9;background:#0b0f17;display:block;object-fit:cover;border-bottom:1px solid var(--line)}
+    .card-body{padding:18px;flex:1;display:flex;flex-direction:column}
+    .card h3{margin:0 0 8px;font-size:19px}
+    .card-desc{margin:0 0 12px;color:var(--muted);flex:1}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0;padding:0;list-style:none}
+    .tags li{background:#1c2330;border:1px solid #2a3344;color:var(--muted);padding:3px 10px;border-radius:999px;font-size:12px;font-weight:500}
+    .links{display:flex;gap:10px;margin-top:auto}
+    .link-btn{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);background:#111723;color:var(--fg);padding:8px 12px;border-radius:8px;font-weight:600;font-size:14px}
+    .link-btn:hover{background:#1a2332;text-decoration:none;border-color:var(--accent)}
+
+    /* About */
+    .about-content{display:grid;grid-template-columns:1.3fr .7fr;gap:32px;align-items:center}
+    .about-text{color:var(--muted);line-height:1.8}
+    .about-text p{margin-bottom:16px}
+    .about img{border-radius:12px;border:1px solid var(--line);box-shadow:0 4px 16px rgba(0,0,0,.2)}
+
+    /* Contact */
+    .contact-box{background:#0b111a;border:1px solid var(--line);border-radius:14px;padding:24px}
+    .contact-box p{color:var(--muted);margin-bottom:16px}
+
+    /* Footer */
+    footer{border-top:1px solid var(--line);margin-top:48px;padding:32px 0;color:var(--muted);font-size:14px;text-align:center}
+    footer a{color:var(--muted)}
+    footer a:hover{color:var(--accent)}
+
+    /* Responsive */
+    @media (max-width:860px){
+      .hero{grid-template-columns:1fr;padding:32px 0}
+      .hero h1{font-size:36px}
+      .about-content{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      header{padding:20px 0}
+      .header-content{flex-wrap:wrap}
+      .nav{order:3;width:100%;justify-content:center}
+    }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <div class="header-content">
+      <a href="#" class="brand" id="header-name">Loading...</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" id="header-github" href="#" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <h1 id="hero-title">Loading...</h1>
+        <p class="hero-subtitle" id="hero-subtitle">Loading...</p>
+        <div class="badge" id="hero-location">📍 Loading...</div>
+        <div class="hero-actions">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="link-btn" id="resume-link" href="#" target="_blank" rel="noopener">📄 Resume</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img id="hero-image" src="images/hero-placeholder.png" alt="Hero showcase" />
+        <p class="hero-tip">Tip: Replace <code>/images/hero-placeholder.png</code> with your equity curve or dashboard screenshot</p>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <div class="section-header">
+        <h2 id="projects-title">Projects</h2>
+        <p class="section-desc">Portfolio of quantitative finance and data science projects</p>
+      </div>
+      <div class="grid" id="projects-grid">
+        <!-- Projects will be dynamically inserted here -->
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="section-header">
+        <h2 id="about-title">About</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-text" id="about-content">
+          <p>Loading...</p>
+        </div>
+        <img id="profile-image" src="images/profile.jpg" alt="Profile" />
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="section-header">
+        <h2>Get in Touch</h2>
+      </div>
+      <div class="contact-box" id="contact-content">
+        <p>Loading...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <p>© <span id="year"></span> <span id="footer-name">Loading...</span> · 
+    <a id="footer-github" href="#" target="_blank" rel="noopener">GitHub</a> · 
+    <a id="footer-linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a></p>
+  </footer>
+
+  <script>
+    // ═══════════════════════════════════════════════════════════
+    // CONFIGURATION - EDIT THIS SECTION TO UPDATE YOUR PORTFOLIO
+    // ═══════════════════════════════════════════════════════════
+    const CONFIG = {
+      // Personal Information
+      name: "Ethan Alan John",
+      email: "you@example.com",
+      location: "India · Available for collaborations",
+      
+      // Links
+      github: "https://github.com/your-username",
+      linkedin: "https://www.linkedin.com/in/your-handle",
+      resume: "docs/Resume.pdf",
+      
+      // Hero Section
+      heroTitle: "Quant & Finance Projects",
+      heroSubtitle: "Backtesting • Portfolio Optimization • Factor Research • Data Pipelines. Clean code, reproducible results, and reports.",
+      heroImage: "images/hero-placeholder.png",
+      
+      // About Section
+      aboutText: `
+        <p>Quant-minded builder focused on reproducible finance research, from data ingestion to validated strategies. Comfortable with Python, pandas/NumPy/Polars, cvxpy, and visualization.</p>
+        <p>Passionate about turning financial theory into practical, tested implementations. Every project includes proper documentation, tests, and reproducible notebooks.</p>
+      `,
+      profileImage: "images/profile.jpg",
+      
+      // Contact Section
+      contactText: "Questions, collaborations, or consulting inquiries are welcome. The quickest way to reach me is email.",
+      
+      // Projects - Add or remove projects as needed
+      projects: [
+        {
+          title: "Portfolio Optimizer",
+          description: "Mean-variance & Black-Litterman with constraints, turnover control, and CV backtests.",
+          image: "images/project-optimizer.png",
+          tags: ["Python", "pandas", "cvxpy"],
+          links: [
+            { text: "Code", url: "https://github.com/your-username/portfolio-optimizer" },
+            { text: "Report", url: "reports/optimizer-report.html" }
+          ]
+        },
+        {
+          title: "Event-Driven Backtester",
+          description: "Event loop, fees/slippage, factor API, metrics (Sharpe, MaxDD), YAML configs.",
+          image: "images/project-backtester.png",
+          tags: ["Python", "NumPy", "Matplotlib"],
+          links: [
+            { text: "Code", url: "https://github.com/your-username/backtester" },
+            { text: "Equity Curve", url: "images/backtest-equity.png" }
+          ]
+        },
+        {
+          title: "Factor Research Pipeline",
+          description: "Momentum, Quality, Value factors with monthly rebalance and slippage model.",
+          image: "images/project-factors.png",
+          tags: ["Python", "Polars", "Research"],
+          links: [
+            { text: "Code", url: "https://github.com/your-username/factor-pipeline" },
+            { text: "Demo", url: "notebooks/factors-demo.html" }
+          ]
+        }
+      ]
+    };
+
+    // ═══════════════════════════════════════════════════════════
+    // AUTO-POPULATE CONTENT - NO NEED TO EDIT BELOW THIS LINE
+    // ═══════════════════════════════════════════════════════════
+    
+    function populatePage() {
+      // Set year
+      document.getElementById('year').textContent = new Date().getFullYear();
+      
+      // Set page title
+      document.getElementById('page-title').textContent = `${CONFIG.name} • Portfolio`;
+      
+      // Header
+      document.getElementById('header-name').textContent = CONFIG.name;
+      document.getElementById('header-github').href = CONFIG.github;
+      
+      // Hero
+      document.getElementById('hero-title').textContent = CONFIG.heroTitle;
+      document.getElementById('hero-subtitle').textContent = CONFIG.heroSubtitle;
+      document.getElementById('hero-location').innerHTML = `📍 ${CONFIG.location}`;
+      document.getElementById('hero-image').src = CONFIG.heroImage;
+      document.getElementById('resume-link').href = CONFIG.resume;
+      
+      // About
+      document.getElementById('about-content').innerHTML = CONFIG.aboutText;
+      document.getElementById('profile-image').src = CONFIG.profileImage;
+      document.getElementById('profile-image').alt = `Portrait of ${CONFIG.name}`;
+      
+      // Contact
+      document.getElementById('contact-content').innerHTML = `
+        <p>${CONFIG.contactText}</p>
+        <p><a class="btn" href="mailto:${CONFIG.email}">${CONFIG.email}</a></p>
+      `;
+      
+      // Footer
+      document.getElementById('footer-name').textContent = CONFIG.name;
+      document.getElementById('footer-github').href = CONFIG.github;
+      document.getElementById('footer-linkedin').href = CONFIG.linkedin;
+      
+      // Projects
+      const projectsGrid = document.getElementById('projects-grid');
+      projectsGrid.innerHTML = CONFIG.projects.map(project => `
+        <article class="card">
+          <img class="thumb" src="${project.image}" alt="${project.title} screenshot" />
+          <div class="card-body">
+            <h3>${project.title}</h3>
+            <p class="card-desc">${project.description}</p>
+            <ul class="tags">
+              ${project.tags.map(tag => `<li>${tag}</li>`).join('')}
+            </ul>
+            <div class="links">
+              ${project.links.map(link => `
+                <a class="link-btn" href="${link.url}" target="_blank" rel="noopener">
+                  ${link.text} →
+                </a>
+              `).join('')}
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+    
+    // Initialize page
+    populatePage();
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f8fa;
+  color: #333;
+}
+
+.header__text-box {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #5c6bc0, #3949ab);
+  color: white;
+}
+
+.work__box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.footer {
+  background-color: #111;
+  color: #eee;
+  text-align: center;
+  padding: 20px;
+}
+
+.footer__social-links img {
+  width: 24px;
+  margin: 0 10px;
+  filter: invert(1);
+}
